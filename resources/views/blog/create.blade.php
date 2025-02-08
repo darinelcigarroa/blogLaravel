@@ -2,28 +2,28 @@
 <form action="{{ route('blog.store') }}" method="POST">
     @csrf
     <label for="title">
-        Titulo del post: <br>
-        <input style="margin-bottom: 5px" type="text" name="title" placeholder="Enter title">
+        {{ __('Post title') }}: <br>
+        <input style="margin-bottom: 5px" type="text" name="title" placeholder="{{ __('Enter title')}}">
         @error('title')
             <div style="background: red; color: white; padding: 5px">{{ $message }}</div>
         @enderror
     </label>
     <br>
     <label for="description">
-        Descripcion del post: <br>
-        <input style="margin-bottom: 5px" type="text" name="description" placeholder="Enter description">
+        {{ __('Post description') }}: <br>
+        <input style="margin-bottom: 5px" type="text" name="description" placeholder="{{ __('Enter description') }}">
         @error('description')
             <div style="background: red; color: white; padding: 5px">{{ $message }}</div>
         @enderror
     </label>
     <br>
     <label for="body">
-        Cuerpo del post: <br>
-        <textarea style="margin-bottom: 5px" name="body" id="body" cols="30" rows="10" placeholder="Escribe el contenido del post"></textarea>
+        {{ __('Post body') }}: <br>
+        <textarea style="margin-bottom: 5px" name="body" id="body" cols="30" rows="10" placeholder="{{ __('Write the content of the post') }}"></textarea>
         @error('body')
             <div style="background: red; color: white; padding: 5px">{{ $message }}</div>
         @enderror
     </label>
     <br>
-    <button style="margin-top: 5px" type="submit">Crear post</button>
+    <button style="margin-top: 5px" type="submit">{{ __('Create post') }}</button>
 </form>
