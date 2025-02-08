@@ -16,15 +16,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('/blog', BlogController::class);
 });
 
+Route::resource('/blog', BlogController::class);
+
 Route::get('about', function () {
-    return 'About';
+    return view('blog.about');
 })->name('about');
 
 Route::get('contact', function () {
-    return 'Contact';
+    return view('blog.contact');
 })->name('contact');
 
 require __DIR__.'/auth.php';
