@@ -73,10 +73,8 @@ class BlogController extends Controller
     public function edit(Blog $blog)
     {
         try {
-            return [
-                'success' => true,
-                'blog' => $blog
-            ];
+           return view('blog.edit', compact('blog'));
+
         } catch (\Throwable $th) {
             return [
                 'success' => false
@@ -93,9 +91,8 @@ class BlogController extends Controller
             $blog->fill($request->all());
             $blog->save();
 
-            return [
-                'success' => true
-            ];
+            return to_route('blog.index');
+
         } catch (\Throwable $th) {
             return ['success' => false];
         }
