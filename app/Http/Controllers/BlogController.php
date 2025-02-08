@@ -91,7 +91,7 @@ class BlogController extends Controller
             $blog->fill($request->all());
             $blog->save();
 
-            return to_route('blog.index');
+            return to_route('blog.index')->with('status', 'Post actualizado exitosamente');
 
         } catch (\Throwable $th) {
             return ['success' => false];
@@ -105,10 +105,8 @@ class BlogController extends Controller
     {
         try {
             $blog->delete();
+            return to_route('blog.index')->with('status', 'Post eliminado exitosamente');
 
-            return [
-                'success' => true
-            ];
         } catch (\Throwable $th) {
             return [
                 'success' => false

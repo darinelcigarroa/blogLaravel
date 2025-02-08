@@ -9,10 +9,15 @@
     </div>
     <ul>
         @foreach ($blogs as $blog)
-            <div style="display: flex; align-items: baseline; margin:4px;">
+            <div style="display: flex; align-items: baseline; margin:20px;">
                 <li><a href="{{ route('blog.show', $blog) }}">{{ $blog->title }}</a></li>
-                <div style="margin: 5px; background: rgb(19, 160, 185); padding: 5px; border-radius: 15px; display: flex; justify-content:center;">
-                    <a href="{{ route('blog.edit', $blog )}}">Editar</a>
+                <div style="margin-left: 10px; display: flex" >
+                    <a style="background: rgb(0, 191, 255); border-radius: 15px; padding: 8px" href="{{ route('blog.edit', $blog )}}">Editar</a>
+                    <form action="{{ route('blog.destroy', $blog) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <input style="cursor:pointer; margin-left: 8px; background: red; border-radius:15px; padding: 8px" type="submit" value="Eliminar">
+                    </form>
                 </div>
             </div>
         @endforeach
